@@ -14,6 +14,13 @@ end
 group :test do
   gem 'rspec'
   gem 'webrat'
+  gem 'spork'
+end
+
+gem 'autotest'
+if RUBY_PLATFORM.downcase.include?("darwin") # I'm on Mac
+  gem 'autotest-fsevent'
+  gem 'autotest-growl'
 end
 
 gem 'json'
