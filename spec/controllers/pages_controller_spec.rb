@@ -8,12 +8,26 @@ describe PagesController do
       get 'home'
       response.should be_success
     end
+
+    it "should have the right title" do
+      get 'home'
+      # have_selector is for test element in HTML.
+      # :content should contain substring like "ROR Sample..."
+      response.should have_selector("title", :content => "ROR Sample | Home")
+    end
   end
 
   describe "GET 'contact'" do
     it "returns http success" do
       get 'contact'
       response.should be_success
+    end
+    
+    it "should have the right title" do
+      get 'contact'
+      # have_selector is for test element in HTML.
+      # :content should contain substring like "ROR Sample..."
+      response.should have_selector("title", :content => "ROR Sample | Contact")
     end
   end
 
@@ -22,5 +36,13 @@ describe PagesController do
       get 'about'
       response.should be_success
     end
+    
+    it "should have the right title" do
+      get 'about'
+      # have_selector is for test element in HTML.
+      # :content should contain substring like "ROR Sample..."
+      response.should have_selector("title", :content => "ROR Sample | About")
+    end
   end
+  
 end
