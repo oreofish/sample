@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe PagesController do
   render_views
+
+  before(:each) do
+    @base_title = 'ROR Sample |'
+  end
   
   describe "GET 'home'" do
     it "returns http success" do
@@ -13,7 +17,7 @@ describe PagesController do
       get 'home'
       # have_selector is for test element in HTML.
       # :content should contain substring like "ROR Sample..."
-      response.should have_selector("title", :content => "ROR Sample | Home")
+      response.should have_selector("title", :content => @base_title + " Home")
     end
   end
 
@@ -27,7 +31,7 @@ describe PagesController do
       get 'contact'
       # have_selector is for test element in HTML.
       # :content should contain substring like "ROR Sample..."
-      response.should have_selector("title", :content => "ROR Sample | Contact")
+      response.should have_selector("title", :content => @base_title + " Contact")
     end
   end
 
@@ -41,7 +45,7 @@ describe PagesController do
       get 'help'
       # have_selector is for test element in HTML.
       # :content should contain substring like "ROR Sample..."
-      response.should have_selector("title", :content => "ROR Sample | Help")
+      response.should have_selector("title", :content => @base_title + " Help")
     end
   end
 
@@ -55,8 +59,7 @@ describe PagesController do
       get 'about'
       # have_selector is for test element in HTML.
       # :content should contain substring like "ROR Sample..."
-      response.should have_selector("title", :content => "ROR Sample | About")
+      response.should have_selector("title", :content => @base_title + " About")
     end
   end
-  
 end
