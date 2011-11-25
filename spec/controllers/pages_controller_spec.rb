@@ -31,6 +31,20 @@ describe PagesController do
     end
   end
 
+  describe "GET 'help'" do
+    it "should be successful" do
+      get 'help'
+      response.should be_success
+    end
+    
+    it "should have the right title" do
+      get 'help'
+      # have_selector is for test element in HTML.
+      # :content should contain substring like "ROR Sample..."
+      response.should have_selector("title", :content => "ROR Sample | Help")
+    end
+  end
+
   describe "GET 'about'" do
     it "should be successful" do
       get 'about'
