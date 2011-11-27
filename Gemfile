@@ -16,6 +16,8 @@ group :test do
   gem 'webrat'
   gem 'spork'
   gem 'autotest'
+  gem 'autotest-rails-pure'
+  gem 'redgreen'
   if RUBY_PLATFORM.downcase.include?("darwin") # I'm on Mac
     gem 'autotest-fsevent'
     gem 'autotest-growl'
