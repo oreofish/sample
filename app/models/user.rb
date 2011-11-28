@@ -10,4 +10,5 @@
 #
 
 class User < ActiveRecord::Base
+  attr_accessible :name, :email #only these attributes can be modified by update_attributes.
 end
