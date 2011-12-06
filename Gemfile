@@ -11,6 +11,7 @@ gem 'gravatar_image_tag', '1.0.0'
 group :development do
   gem 'rspec-rails'
   gem 'annotate'
+  gem 'faker'
 end
 
 group :test do
@@ -27,7 +28,7 @@ group :test do
   gem 'factory_girl_rails', '1.0'
 end
 
-
+gem 'will_paginate'
 gem 'json'
 
 # Gems used only for assets and not required
