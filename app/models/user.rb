@@ -11,6 +11,8 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :microposts, :dependent => :destroy
+  
   attr_accessor :password
   #only below attributes can be modified by update_attributes.
   attr_accessible :name, :email, :password, :password_confirmation
