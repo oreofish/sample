@@ -8,10 +8,15 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  encrypted_password :string(255)
+#  salt               :string(255)
+#  admin              :boolean         default(FALSE)
 #
 
 class User < ActiveRecord::Base
   has_many :microposts, :dependent => :destroy
+  has_many :relationships, :foreign_key => "follower_id",
+                           :dependent => :destroy
+  has_many :following, :through => :relationships, :source => :followed
   
   attr_accessor :password
   #only below attributes can be modified by update_attributes.
@@ -59,7 +64,19 @@ class User < ActiveRecord::Base
     # This is preliminary. See Chapter 12 for the full implementation.
     Micropost.where("user_id = ?", id)
   end
+  
+  def following?(followed)
+    relationships.find_by_followed_id(followed)
+  end
 
+  def follow!(followed)
+    relationships.create!(:followed_id => followed.id)
+  end
+
+  def unfollow!(followed)
+    relationships.find_by_followed_id(followed).destroy
+  end
+    
   private
 
   def encrypt_password
